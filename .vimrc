@@ -19,6 +19,18 @@ set wildmenu wildmode=list:full
 "Encode
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,ucs-2le,ucs-2,cp932
+
+" For Golang
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOROOT/misc/vim
+filetype plugin indent on
+syntax on
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
+set completeopt=menu,preview
+
+
 """"""""""""""""""""""""""""""
 " プラグインのセットアップ
 """"""""""""""""""""""""""""""
